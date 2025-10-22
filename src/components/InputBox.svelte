@@ -8,5 +8,7 @@ textarea {
 }
 </style>
 
-<h2>Json Input</h2>
-<textarea bind:value={ json }></textarea>
+<div class="card bg-neutral p-2 m-2">
+    <h2 class="card-title">JSON Input</h2>
+    <textarea bind:value={ json } class="textarea"></textarea>
+</div>
