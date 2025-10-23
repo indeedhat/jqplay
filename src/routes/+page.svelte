@@ -5,22 +5,29 @@ import InputBox from '../components/InputBox.svelte'
 import OutputBox from '../components/OutputBox.svelte'
 
 let json = $state('')
-let outputCount = $state(1)
+let outputs = $state([
+	{ id: crypto.randomUUID() }
+])
+
+const addOutput = () => outputs.push({ id: crypto.randomUUID() })
+const removeOutput = (id: string) => outputs = outputs.filter(o => o.id !== id)
 </script>
 
-<div class="navbar bg-base-300 min-h-auto">
-	JqPlay
-</div>
+<main class="flex flex-col p-2 gap-2 flex-grow overflow-auto">
+	<InputBox bind:json={ json } />
 
-<InputBox bind:json={ json } />
-
-<div class="mx-4 flex justify-between">
-	<p class="m-1 font-bold">Output</p>
-	<button onclick={() => outputCount += 1} class="btn btn-sm btn-soft btn-accent">+</button>
-</div>
-
-<section class="flex flex-col">
-	{#each {length: outputCount}, i}
-		<OutputBox { json } />
+	{#each outputs as output (output.id)}
+		<OutputBox { json }>
+			{#snippet remove()}
+				{#if outputs.length > 1}
+					<button
+						class="btn btn-xs bg-secondary text-neutral"
+						onclick={() => removeOutput(output.id)}
+					>X</button>
+				{/if}
+			{/snippet}
+		</OutputBox>
 	{/each}
-</section>
+
+	<button onclick={addOutput} class="btn btn-sm btn-soft btn-accent">+</button>
+</main>
