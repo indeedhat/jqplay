@@ -25,6 +25,7 @@
 		"@tailwindcss/vite": "^4.1.15",
 		"daisyui": "^5.3.7",
 		"jq-wasm": "^1.1.0-jq-1.8.1",
+		"prismjs": "^1.30.0",
 		"tailwindcss": "^4.1.15"
 	}
 }

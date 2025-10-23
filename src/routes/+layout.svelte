@@ -1,6 +1,7 @@
 <script lang="ts">
 export const prerender = true;
 
+import "prismjs/themes/prism-tomorrow.css"
 import favicon from '$lib/assets/favicon.svg';
 
 let { children } = $props();

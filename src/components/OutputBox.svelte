@@ -1,7 +1,8 @@
 <script lang="ts">
 import type { Snippet } from 'svelte';
-
 import * as jq from 'jq-wasm'
+import Prism from "prismjs"
+import "prismjs/components/prism-json"
 
 import Fieldset from './Fieldset.svelte'
 
@@ -22,7 +23,7 @@ $effect(async () => {
 	}
 
 	const res = await jq.raw(json, query, flag ? [flag] : undefined)
-	output = res.stdout
+	output = Prism.highlight(res.stdout, Prism.languages.json, "json")
 })
 </script>
 
@@ -53,7 +54,18 @@ $effect(async () => {
 			</select>
 		</div>
 
-		<textarea class="textarea flex-grow cursor-text h-full resize-none outline-none" bind:value={ output } readonly></textarea>
+		<code
+			class="textarea outline-none w-full whitespace-pre"
+			contenteditable
+			onbeforeinput={(e) => e.preventDefault()}
+			onpaste={(e) => e.preventDefault()}
+			onkeydown={(e) => {
+				const allowed = (e.ctrlKey || e.metaKey) && (e.key === "a" || e.key === "c")
+				if (!allowed) {
+					e.preventDefault()
+				}
+			}}
+		>{@html output }</code>
 	</div>
 </Fieldset>
 
