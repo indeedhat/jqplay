@@ -1,10 +1,10 @@
 <script lang="ts">
 import type { Snippet } from 'svelte';
 import * as jq from 'jq-wasm'
-import Prism from "prismjs"
-import "prismjs/components/prism-json"
 
 import Fieldset from './Fieldset.svelte'
+import JsonPrinter from './JsonPrinter.svelte';
+import JqEditor from './JqEditor.svelte';
 
 interface Props {
 	json: string
@@ -17,13 +17,13 @@ let query = $state('')
 let flag = $state('')
 let output = $state('')
 
-$effect(async () => {
+$effect(async (): void => {
 	if (!json || !query) {
 		return
 	}
 
 	const res = await jq.raw(json, query, flag ? [flag] : undefined)
-	output = Prism.highlight(res.stdout, Prism.languages.json, "json")
+	output = res.stdout
 })
 </script>
 
@@ -38,11 +38,7 @@ $effect(async () => {
 	{/snippet}
 	<div  class="flex flex-row gap-2 w-full h-full">
 		<div class="flex flex-col w-1/3 gap-2 h-full">
-			<textarea
-				bind:value={ query }
-				class="textarea outline-none flex-grow resize-none w-full"
-				placeholder="Query..."
-			></textarea>
+			<JqEditor bind:query={query} />
 			<select bind:value={ flag } class="select outline-none w-full">
 				<option value="">Choose a flag</option>
 				<option value="-c">-c (Compact output)</option>
@@ -54,18 +50,7 @@ $effect(async () => {
 			</select>
 		</div>
 
-		<code
-			class="textarea outline-none w-full whitespace-pre"
-			contenteditable
-			onbeforeinput={(e) => e.preventDefault()}
-			onpaste={(e) => e.preventDefault()}
-			onkeydown={(e) => {
-				const allowed = (e.ctrlKey || e.metaKey) && (e.key === "a" || e.key === "c")
-				if (!allowed) {
-					e.preventDefault()
-				}
-			}}
-		>{@html output }</code>
+		<JsonPrinter bind:json={output} />
 	</div>
 </Fieldset>
 

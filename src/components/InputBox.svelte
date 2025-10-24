@@ -1,9 +1,14 @@
-<script>
+<script lang="ts">
 import Fieldset from './Fieldset.svelte'
+import JsonEditor from './JsonEditor.svelte';
 
-let { json = $bindable() } = $props()
+interface Props {
+    json: string
+}
+
+let { json = $bindable() }: Props = $props()
 </script>
 
 <Fieldset legend="JSON Input">
-    <textarea bind:value={ json } class="textarea outline-none w-full"></textarea>
+    <JsonEditor bind:json={ json } />
 </Fieldset>
