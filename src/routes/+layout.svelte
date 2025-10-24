@@ -1,11 +1,19 @@
 <script lang="ts">
 export const prerender = true;
 
+import { page } from '$app/state'
+
+import '@/style.css'
 import "prismjs/themes/prism-tomorrow.css"
 import favicon from '$lib/assets/favicon.svg';
 
 let { children } = $props();
 
+const active = (path: string) => {
+	return page.url.pathname === path
+		? "menu-active"
+		: ""
+}
 </script>
 
 <svelte:head>
@@ -18,10 +26,11 @@ let { children } = $props();
 		</div>
 		<div class="navbar-center">
 			<ul class="menu menu-horizontal bg-base-200 rounded-box">
-			  <li><a>Convert</a></li>
-			  <li><a>Diff</a></li>
-			  <li><a>Explorer</a></li>
-			  <li><a>Jq</a></li>
+				<li class="menu-disabled"><a>Convert</a></li>
+				<li class="menu-disabled"><a>Diff</a></li>
+				<li class="menu-disabled"><a>Explorer</a></li>
+				<li><a href="/jq" class={active("/jq")}>Jq</a></li>
+				<li><a href="/pretty" class={active("/pretty")}>Pretty</a></li>
 			</ul>
 		</div>
 		<div class="navbar-end"></div>

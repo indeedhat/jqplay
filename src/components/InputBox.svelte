@@ -1,6 +1,6 @@
 <script lang="ts">
-import Fieldset from './Fieldset.svelte'
-import JsonEditor from './JsonEditor.svelte';
+import Fieldset from '@components/Fieldset.svelte'
+import JsonEditor from '@components/JsonEditor.svelte';
 
 interface Props {
     json: string

@@ -2,9 +2,9 @@
 import type { Snippet } from 'svelte';
 import * as jq from 'jq-wasm'
 
-import Fieldset from './Fieldset.svelte'
-import JsonPrinter from './JsonPrinter.svelte';
-import JqEditor from './JqEditor.svelte';
+import Fieldset from '@components/Fieldset.svelte'
+import JsonPrinter from '@components/JsonPrinter.svelte';
+import JqEditor from '@components/JqEditor.svelte';
 
 interface Props {
 	json: string
