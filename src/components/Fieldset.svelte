@@ -20,7 +20,7 @@ legend {
 }
 </style>
 
-<fieldset class={[`fieldset bg-base-200 border-base-300 rounded-box border p-2 w-full flex`, klass]}>
+<fieldset class={[`fieldset bg-base-200 border-base-300 rounded-box border p-2 flex flex-col min-w-0 min-h-0`, klass]}>
     {#if legend}
         <legend class="fieldset-legend px-2 w-full">
             {#if typeof legend === "function"}

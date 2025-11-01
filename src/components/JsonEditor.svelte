@@ -9,6 +9,7 @@ interface Props {
 
 let { json = $bindable('') }: Props = $props()
 let editor: HTMLElement
+let jsonError: string = $state('')
 
 const handleInputChange = (): void => {
     json = editor.innerText
@@ -68,6 +69,19 @@ const restoreCaretPos = (offset: number): void => {
     selection?.addRange(range)
 }
 
+$effect(async (): void => {
+	try {
+		if (!json) {
+			throw ''
+		}
+		JSON.parse(json)
+	} catch (e: SyntaxError) {
+        jsonError = json.replace(/[\r\n\s]/, '')
+			? e.message
+			: ""
+	}
+})
+
 onMount(() => {
     try {
         highlightSyntax()
@@ -76,8 +90,16 @@ onMount(() => {
 </script>
 
 <code
-    class="textarea outline-none w-full whitespace-pre"
+    class="textarea outline-none w-full flex-grow min-w-0 block whitespace-pre overflow-x-auto overflow-y-auto"
     bind:this={editor}
     oninput={handleInputChange}
     contenteditable
 ></code>
+{#if jsonError}
+    <div role="alert" class="alert alert-error">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>{jsonError}</span>
+    </div>
+{/if}

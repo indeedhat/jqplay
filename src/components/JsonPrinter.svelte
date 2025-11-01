@@ -17,7 +17,7 @@ $effect(() => {
 </script>
 
 <code
-    class="textarea outline-none w-full whitespace-pre"
+    class="textarea outline-none w-full whitespace-pre overflow-auto flex-grow"
     contenteditable
     onbeforeinput={(e) => e.preventDefault()}
     onpaste={(e) => e.preventDefault()}

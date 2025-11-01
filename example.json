@@ -1,0 +1,33 @@
+{
+	"id": 101,
+	"first_name": "Ava",
+	"last_name": "Johnson",
+	"age": 29,
+	"email": "ava.johnson@example.com",
+	"phone": "+1-555-982-4411",
+	"address": {
+		"street": "742 Evergreen Terrace",
+		"city": "Springfield",
+		"state": "IL",
+		"zip": "62704"
+	},
+	"is_active": true,
+	"roles": ["admin", "editor", "user"],
+	"last_login": "2025-10-28T14:37:00Z",
+	"subscription": {
+		"type": "premium",
+		"expires_on": "2026-10-28"
+	},
+	"preferences": {
+		"theme": "dark",
+		"notifications": true,
+		"language": "en-US"
+	},
+	"account_balance": 523.75,
+	"loyalty_points": 1420,
+	"favorite_categories": ["technology", "books", "travel"],
+	"verified": true,
+	"referral_code": "AVAJ2025",
+	"notes": "Customer prefers email communication.",
+	"created_at": "2023-09-15T10:12:00Z"
+}

@@ -76,7 +76,7 @@ onMount(() => {
 </script>
 
 <code
-    class="textarea outline-none w-full whitespace-pre flex-grow"
+    class="textarea outline-none w-full whitespace-pre flex-grow overflow-auto"
     bind:this={editor}
     oninput={handleInputChange}
     contenteditable

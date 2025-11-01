@@ -27,7 +27,7 @@ const active = (path: string) => {
 		<div class="navbar-center">
 			<ul class="menu menu-horizontal bg-base-200 rounded-box">
 				<li class="menu-disabled"><a>Convert</a></li>
-				<li class="menu-disabled"><a>Diff</a></li>
+				<li><a href="/diff" class={active("/diff")}>Diff</a></li>
 				<li class="menu-disabled"><a>Explorer</a></li>
 				<li><a href="/jq" class={active("/jq")}>Jq</a></li>
 				<li><a href="/pretty" class={active("/pretty")}>Pretty</a></li>
