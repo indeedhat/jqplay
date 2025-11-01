@@ -3,7 +3,7 @@ import * as jq from 'jq-wasm'
 
 import Fieldset from "@/components/Fieldset.svelte";
 import JsonEditor from "@/components/JsonEditor.svelte";
-import JsonPrinter from "@/components/JsonPrinter.svelte";
+import JsonPrinter from "@/components/json-printer/JsonPrinter.svelte";
 
 let input: string = $state('')
 let output: string = $state('')

@@ -3,7 +3,7 @@ import type { Snippet } from 'svelte';
 import * as jq from 'jq-wasm'
 
 import Fieldset from '@components/Fieldset.svelte'
-import JsonPrinter from '@components/JsonPrinter.svelte';
+import JqOutputPrinter from '@components/JqOutputPrinter.svelte';
 import JqEditor from '@components/JqEditor.svelte';
 
 interface Props {
@@ -16,6 +16,15 @@ let { json, remove }: Props = $props()
 let query = $state('')
 let flag = $state('')
 let output = $state('')
+
+const isJson = (input: string) => {
+	try {
+		JSON.parse(input)
+		return true
+	} catch {}
+
+	return false
+}
 
 $effect(async (): void => {
 	if (!json || !query) {
@@ -50,7 +59,7 @@ $effect(async (): void => {
 			</select>
 		</div>
 
-		<JsonPrinter bind:json={output} />
+		<JqOutputPrinter bind:json={output} />
 	</div>
 </Fieldset>
 

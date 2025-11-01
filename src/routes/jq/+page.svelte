@@ -33,5 +33,5 @@ const removeOutput = (id: string) => outputs = outputs.filter(o => o.id !== id)
 		</OutputBox>
 	{/each}
 
-	<button onclick={addOutput} class="btn btn-sm btn-soft btn-accent">+</button>
+	<button onclick={addOutput} class="btn btn-sm btn-soft btn-accent">Add Output</button>
 </main>
