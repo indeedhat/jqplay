@@ -17,6 +17,21 @@ const active = (path: string) => {
 </script>
 
 <svelte:head>
+    <title>JSON Playground</title>
+
+    <meta name="description" content="A web-based JSON viewer, prettifier and JQ explorer.">
+    <meta name="keywords" content="JSON viewer, JSON formatter, jq filter, online JSON tool, JSON playground">
+    <meta name="author" content="Indeedhat">
+
+    <meta property="og:title" content="JSON Playground - View and Filter JSON with jq">
+    <meta property="og:description" content="A web-based JSON viewer, prettifier and JQ explorer.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jsonplayground.dev">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON Playground - View and Filter JSON with jq">
+    <meta name="twitter:description" content="A web-based JSON viewer, prettifier and JQ explorer.">
+
 	<link rel="icon" href={favicon} />
 </svelte:head>
 <div class="h-screen flex flex-col">
