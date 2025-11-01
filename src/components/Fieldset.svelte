@@ -14,7 +14,7 @@ let {
 }: Props = $props();
 </script>
 
-<style>
+<style scoped>
 legend {
     padding-block: 0
 }

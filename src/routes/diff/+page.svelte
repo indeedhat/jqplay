@@ -5,8 +5,8 @@ import diff from '@lib/diff'
 
 import Fieldset from "@/components/Fieldset.svelte";
 import JsonEditor from "@/components/JsonEditor.svelte";
-import ArrayBlock from './ArrayBlock.svelte';
-import ObjectBlock from './ObjectBlock.svelte';
+//import ArrayBlock from './ArrayBlock.svelte';
+//import ObjectBlock from './ObjectBlock.svelte';
 
 let a: string = $state('')
 let b: string = $state('')

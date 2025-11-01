@@ -2,3 +2,7 @@
 @plugin "daisyui" {
     themes: all;
 }
+
+.flex-col {
+  min-width: 0;
+}

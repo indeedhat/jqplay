@@ -11,12 +11,6 @@ const addOutput = () => outputs.push({ id: crypto.randomUUID() })
 const removeOutput = (id: string) => outputs = outputs.filter(o => o.id !== id)
 </script>
 
-<style>
-.main-flex-child, .flex-row, .flex-col {
-  min-width: 0;
-}
-</style>
-
 <main class="flex flex-col p-2 gap-2 flex-grow overflow-auto overflow-x-hidden max-w-full">
 	<InputBox bind:json={ json } />
 
